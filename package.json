@@ -2,8 +2,11 @@
   "name": "mapbox-gl-shaders",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/mapbox-gl-shaders.js",
+  "jsnext:main": "dist/mapbox-gl-shaders.es.js",
   "scripts": {
+    "build": "mkdir -p dist && node build.js && rollup -i dist/mapbox-gl-shaders.es.js -o dist/mapbox-gl-shaders.js -f cjs",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,12 +19,7 @@
     "url": "https://github.com/mapbox/mapbox-gl-shaders/issues"
   },
   "homepage": "https://github.com/mapbox/mapbox-gl-shaders#readme",
-  "dependencies": {
-    "brfs": "^1.4.0"
-  },
-  "browserify": {
-    "transform": [
-      "brfs"
-    ]
+  "devDependencies": {
+    "rollup": "^0.26.3"
   }
 }
